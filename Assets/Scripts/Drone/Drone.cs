@@ -53,7 +53,7 @@ public class Drone : MonoBehaviour
 
     public void Unload()
     {
-        TargetBase.Collect(carriedResources);
+        TargetBase.Resources += carriedResources;
         carriedResources = 0;
     }
 }
