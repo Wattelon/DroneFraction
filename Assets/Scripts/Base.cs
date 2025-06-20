@@ -11,7 +11,8 @@ public class Base : MonoBehaviour
     [SerializeField][Range(0, 10)] private float droneSpeed = 5;
     [SerializeField] private int resources;
     
-    private List<Drone> _drones = new();
+    private readonly List<Drone> _drones = new();
+    private bool _droneTrailsEnabled;
     
     public event Action ResourcesChanged;
     public Faction Faction => faction;
@@ -62,11 +63,22 @@ public class Base : MonoBehaviour
         }
     }
 
+    public void SetDroneTrails(bool value)
+    {
+        _droneTrailsEnabled = value;
+        foreach (var drone in _drones)
+        {
+            drone.TrailRenderer.enabled = _droneTrailsEnabled;
+        }
+    }
+
     private void SpawnDrone()
     {
         var drone = Instantiate(dronePrefab, transform.position, Quaternion.identity);
         drone.Faction = faction;
         drone.GetComponent<Renderer>().SetMaterials(GetComponent<Renderer>().sharedMaterials.ToList());
+        drone.TrailRenderer.enabled = _droneTrailsEnabled;
+        drone.NavMeshAgent.speed = droneSpeed;
         _drones.Add(drone);
     }
 }

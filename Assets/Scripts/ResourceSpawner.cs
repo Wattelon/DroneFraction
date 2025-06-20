@@ -20,7 +20,7 @@ public class ResourceSpawner : MonoBehaviour
     {
         var randomPosition = Random.insideUnitCircle * spawnRadius;
         var spawnPosition = transform.position + new Vector3(randomPosition.x, 0, randomPosition.y);
-        Instantiate(resource, spawnPosition, Quaternion.identity);
+        Instantiate(resource, spawnPosition, Quaternion.identity, transform);
     }
 
     private IEnumerator SpawnResourceCoroutine()
