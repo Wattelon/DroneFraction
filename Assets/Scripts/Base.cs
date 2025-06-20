@@ -55,7 +55,7 @@ public class Base : MonoBehaviour
             }
             else if (droneAmount > amount)
             {
-                Destroy(_drones[^1]);
+                Destroy(_drones[^1].gameObject);
                 _drones.RemoveAt(_drones.Count - 1);
                 droneAmount--;
             }
