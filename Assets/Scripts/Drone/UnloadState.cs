@@ -7,6 +7,7 @@ public class UnloadState : BaseState
     public override void EnterState()
     {
         _context.NavMeshAgent.avoidancePriority = Random.Range(20, 30);
+        _context.ParticleSystem.Play();
     }
 
     public override void UpdateState()
@@ -21,6 +22,7 @@ public class UnloadState : BaseState
 
     public override void ExitState()
     {
+        _context.ParticleSystem.Stop();
         _context.TargetBase.UnloadingDrone = null;
         _context.TargetBase = null;
         _unloadTime = 0f;

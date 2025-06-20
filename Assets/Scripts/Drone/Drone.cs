@@ -11,6 +11,7 @@ public class Drone : MonoBehaviour
     public Faction Faction => faction;
     
     public NavMeshAgent NavMeshAgent { get; private set; }
+    public ParticleSystem ParticleSystem { get; private set; }
     public SearchState SearchState { get; } = new();
     public HarvestState HarvestState { get; } = new();
     public RetrieveState RetrieveState { get; } = new();
@@ -21,7 +22,9 @@ public class Drone : MonoBehaviour
 
     private void Awake()
     {
+        ParticleSystem = GetComponent<ParticleSystem>();
         NavMeshAgent = GetComponent<NavMeshAgent>();
+        
         SearchState.Initialize(this);
         HarvestState.Initialize(this);
         RetrieveState.Initialize(this);
