@@ -6,7 +6,7 @@ public class UnloadState : BaseState
     
     public override void EnterState()
     {
-        _context.NavMeshAgent.avoidancePriority = Random.Range(30, 40);
+        _context.NavMeshAgent.avoidancePriority = Random.Range(20, 30);
     }
 
     public override void UpdateState()
@@ -21,6 +21,7 @@ public class UnloadState : BaseState
 
     public override void ExitState()
     {
+        _context.TargetBase.UnloadingDrone = null;
         _context.TargetBase = null;
         _unloadTime = 0f;
     }

@@ -8,6 +8,7 @@ public class Base : MonoBehaviour
     
     public event Action ResourcesChanged;
     public Faction Faction => faction;
+    public Drone UnloadingDrone;
     
     public int Resources
     {

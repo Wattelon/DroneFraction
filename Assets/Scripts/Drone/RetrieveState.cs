@@ -12,6 +12,11 @@ public class RetrieveState : BaseState
 
     public override void UpdateState()
     {
+        if (_context.TargetBase.UnloadingDrone is null)
+        {
+            _context.TargetBase.UnloadingDrone = _context;
+            _context.NavMeshAgent.avoidancePriority = Random.Range(30, 40);
+        }
         if (_context.NavMeshAgent.remainingDistance <= _context.NavMeshAgent.stoppingDistance)
         {
             _context.SwitchState(_context.UnloadState);
