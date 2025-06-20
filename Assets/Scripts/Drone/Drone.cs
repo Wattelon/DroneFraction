@@ -3,12 +3,11 @@ using UnityEngine.AI;
 
 public class Drone : MonoBehaviour
 {
-    [SerializeField] private Faction faction;
     [SerializeField] private int carriedResources;
 
     private BaseState _currentState;
     
-    public Faction Faction => faction;
+    public Faction Faction;
     
     public NavMeshAgent NavMeshAgent { get; private set; }
     public ParticleSystem ParticleSystem { get; private set; }
