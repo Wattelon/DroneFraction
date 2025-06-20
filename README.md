@@ -2,9 +2,9 @@
 
 ## Демонстрация:
 
-<video controls width="1280" height="720">
-    <source src="DroneFraction.mp4" type="video/mp4">
-</video>
+
+https://github.com/user-attachments/assets/0c3526e1-57a5-43b1-b3d1-f7fdb5e766af
+
 
 ## Реализовано:
 
