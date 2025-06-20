@@ -1,16 +1,19 @@
+using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ResourceSpawner : MonoBehaviour
 {
     [SerializeField] private Resource resource;
-    [SerializeField] private int spawnRadius = 20;
+    [SerializeField] private float spawnRadius = 20f;
     [SerializeField] private int initialSpawnAmount = 10;
-    [SerializeField] private int spawnInterval = 5;
+    
+    public float SpawnInterval = 5f;
 
     private void Start()
     {
         for (var i = 0; i < initialSpawnAmount; i++) SpawnResource();
-        InvokeRepeating(nameof(SpawnResource), spawnInterval, spawnInterval);
+        StartCoroutine(SpawnResourceCoroutine());
     }
 
     private void SpawnResource()
@@ -18,5 +21,12 @@ public class ResourceSpawner : MonoBehaviour
         var randomPosition = Random.insideUnitCircle * spawnRadius;
         var spawnPosition = transform.position + new Vector3(randomPosition.x, 0, randomPosition.y);
         Instantiate(resource, spawnPosition, Quaternion.identity);
+    }
+
+    private IEnumerator SpawnResourceCoroutine()
+    {
+        yield return new WaitForSeconds(SpawnInterval);
+        SpawnResource();
+        StartCoroutine(SpawnResourceCoroutine());
     }
 }

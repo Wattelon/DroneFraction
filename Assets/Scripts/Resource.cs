@@ -8,7 +8,7 @@ public class Resource : MonoBehaviour
 
     public int Collect()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
         return value;
     }
 }
